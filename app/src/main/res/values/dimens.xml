@@ -1,0 +1,11 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- General -->
+    <dimen name="line_denomination_card">100dp</dimen>
+    <dimen name="line_denomination_text">70dp</dimen>
+    <dimen name="headway_text">30sp</dimen>
+    <dimen name="padding_minutes_from_headway">5dp</dimen>
+</resources>

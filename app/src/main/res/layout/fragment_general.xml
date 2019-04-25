@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GeneralFragment"
+    tools:layout_editor_absoluteY="81dp">
+
+    <!-- Fromwards -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/fromwardsCardId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/fromwardsLabelId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_fromwards"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/fromwardsId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/placeholder_fromwards" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!-- Towards -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/towardsCardId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fromwardsCardId">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/towardsLabelId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_towards"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/towardsId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/placeholder_towards" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!-- Line Denomination and Interest Points -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/lineDenominationAndInterestPointsCardId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/headwayCardId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/towardsCardId">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/lineDenominationId"
+                style="@style/LineDenominationFrame"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_denomination_card"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/placeholder_line_denomination"
+                android:textStyle="normal|bold" />
+
+            <ListView
+                android:id="@+id/interestPointsId"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_denomination_card"
+                android:layout_weight="1"
+                android:divider="@android:color/transparent" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!-- Headway -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/headwayCardId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/headwayLabelId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_headway"
+                android:textStyle="normal|bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/headwayId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="bottom|end"
+                    android:text="@string/placeholder_headway" />
+
+                <TextView
+                    android:id="@+id/headwayMinutes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:paddingStart="@dimen/padding_minutes_from_headway"
+                    android:paddingLeft="@dimen/padding_minutes_from_headway"
+                    android:paddingRight="@dimen/padding_minutes_from_headway"
+                    android:text="@string/label_minutes" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
