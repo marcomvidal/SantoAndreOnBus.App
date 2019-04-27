@@ -1,18 +1,16 @@
 package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.presenters;
 
 import android.app.Activity;
-import android.app.Service;
+import android.content.Context;
 import android.content.res.Resources;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import java.util.List;
 
 import br.com.vidal.santoandreonbus.GeneralFragment;
 import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.InterestPoint;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.Line;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.services.LineService;
 
 public class GeneralFragmentPresenter {
 
@@ -36,12 +34,17 @@ public class GeneralFragmentPresenter {
         fragment.headway.setText(headwayText);
     }
 
-    public void populateInterestPointsList(Line line) {
+    public void populateInterestPointsList(List<InterestPoint> interestPoints) {
         if (fragment.getActivity() == null) { return; }
 
         fragment.interestPoints.setAdapter(new ArrayAdapter<>(fragment.getActivity(),
                 R.layout.interest_points_listview,
-                line.interestPoints)
+                interestPoints)
         );
+    }
+
+    public Context getContext() {
+        if (fragment.getActivity() == null) { return null; }
+        return fragment.getActivity().getApplicationContext();
     }
 }

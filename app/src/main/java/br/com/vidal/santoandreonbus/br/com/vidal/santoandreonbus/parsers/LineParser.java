@@ -32,7 +32,7 @@ public class LineParser implements JSONParseable<Line> {
             JSONObject json = new JSONObject(jsonString);
             Line line = new Line();
 
-            line.id = json.getInt("id");
+            line.id = json.getInt("_id");
             line.letter = json.getString("letter");
             line.number = json.getString("number");
             line.fromwards = json.getString("fromwards");

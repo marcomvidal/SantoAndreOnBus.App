@@ -1,22 +1,23 @@
 package br.com.vidal.santoandreonbus;
 
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.InterestPoint;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.Line;
+import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.parsers.InterestPointParser;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.parsers.LineParser;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.presenters.GeneralFragmentPresenter;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.services.LineService;
+import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.tasks.GetLineTask;
+import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.utilities.APIClient;
 
 
 public class GeneralFragment extends Fragment {
@@ -28,15 +29,12 @@ public class GeneralFragment extends Fragment {
     public ListView interestPoints;
     private GeneralFragmentPresenter presenter;
     private Line line;
-    private LineService service;
 
     public GeneralFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        this.service = new LineService();
-        this.line = service.find();
         this.presenter = new GeneralFragmentPresenter(this, getResources());
 
         return inflater.inflate(R.layout.fragment_general, container, false);
@@ -47,8 +45,7 @@ public class GeneralFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         getViews(view);
-        presenter.populateViews(line);
-        presenter.populateInterestPointsList(line);
+        new GetLineTask(new APIClient(), presenter).execute("1");
     }
 
     private void getViews(View view) {
