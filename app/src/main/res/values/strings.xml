@@ -18,4 +18,8 @@
 
     <!-- Messages -->
     <string name="network_connection_failure">"Não foi possível obter os dados na Internet."</string>
+
+    <!-- Progress Dialog -->
+    <string name="progress_title">Carregando...</string>
+    <string name="progress_message">Obtendo as informações necessárias pela Internet.</string>
 </resources>

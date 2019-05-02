@@ -15,9 +15,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    // TODO: Implement HomeFragment
-                    return true;
                 case R.id.navigation_general:
                     placeFragment(new GeneralFragment());
                     return true;
@@ -36,7 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_line);
+        setViews();
+    }
 
+    private void setViews() {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

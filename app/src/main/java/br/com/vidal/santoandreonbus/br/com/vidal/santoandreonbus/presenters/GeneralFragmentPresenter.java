@@ -1,6 +1,7 @@
 package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.presenters;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.ArrayAdapter;
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter;
 import java.util.List;
 
 import br.com.vidal.santoandreonbus.GeneralFragment;
+import br.com.vidal.santoandreonbus.MainActivity;
 import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.InterestPoint;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.Line;
@@ -24,7 +26,7 @@ public class GeneralFragmentPresenter {
     }
 
     public void populateViews(Line line) {
-        String headwayText = String.format(resources.getString(R.string.placeholder_headway),
+        String headwayText = String.format(fragment.getString(R.string.placeholder_headway),
                 line.peakHeadway,
                 line.offpeakHeadway);
 
@@ -41,10 +43,5 @@ public class GeneralFragmentPresenter {
                 R.layout.interest_points_listview,
                 interestPoints)
         );
-    }
-
-    public Context getContext() {
-        if (fragment.getActivity() == null) { return null; }
-        return fragment.getActivity().getApplicationContext();
     }
 }
