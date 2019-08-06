@@ -1,64 +1,59 @@
 package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.tasks;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
-import android.widget.Toast;
 
-import br.com.vidal.santoandreonbus.R;
+import br.com.vidal.santoandreonbus.MainActivity;
+import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.InterestPoint;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.utilities.APIClient;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.utilities.JsonParser;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.utilities.LineFillerObserver;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-public class GetLineTask extends AsyncTask<Integer, Object, Line> {
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
-    private LineFillerObserver observer;
-    private APIClient client;
-    private JsonParser parser;
+
+public class GetLineTask extends AsyncTask<String, Object, Line> {
+
     private ProgressDialog dialog;
+    private final WeakReference<MainActivity> reference;
+    private APIClient client;
+    private Gson gson;
 
-    public GetLineTask(LineFillerObserver observer) {
-        this.observer = observer;
+    public GetLineTask(MainActivity activity) {
+        this.reference = new WeakReference<>(activity);
         this.client = new APIClient();
-        this.parser = new JsonParser();
+        this.gson = new Gson();
     }
 
     @Override
     protected void onPreExecute() {
-        Fragment fragment = (Fragment) observer;
-        dialog = new ProgressDialog(fragment.getActivity());
-        dialog.setTitle(fragment.getResources().getString(R.string.progress_title));
-        dialog.setMessage(fragment.getResources().getString(R.string.progress_message));
+        this.dialog = new ProgressDialog(reference.get());
+        dialog.setTitle("Informações da linha");
+        dialog.setMessage("Carregando. Por favor, aguarde...");
         dialog.show();
     }
 
     @Override
-    protected Line doInBackground(Integer... params) {
-        String urn = "lines/" + params[0].toString();
+    protected Line doInBackground(String... params) {
+        String urn = "lines/" + params[0];
 
         try {
             String json = client.get(urn);
-            Line line = parser.toLine(json);
-            line.interestPoints = parser.toInterestPointsList(json);
+            Line line = gson.fromJson(json, Line.class);
 
             return line;
         } catch (Exception e) {
-            Fragment fragment = (Fragment) observer;
-
-            Toast.makeText(fragment.getContext(),
-                    fragment.getResources().getString(R.string.network_connection_failure),
-                    Toast.LENGTH_LONG
-            ).show();
+            return new Line();
         }
-
-        return null;
     }
 
     @Override
     protected void onPostExecute(Line line) {
-        observer.fillViews(line);
         dialog.dismiss();
+        MainActivity activity = reference.get();
+        activity.retrieveLineFromAsyncTask(line);
     }
-
 }

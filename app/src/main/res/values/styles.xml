@@ -13,6 +13,8 @@
         <item name="android:background">@color/colorLineDenominationBackground</item>
         <item name="android:textColor">@color/colorLineDenominationText</item>
         <item name="android:textSize">@dimen/line_denomination_text</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal|bold</item>
     </style>
 
 </resources>

@@ -111,9 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_denomination_card"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/placeholder_line_denomination"
-                android:textStyle="normal|bold" />
+                android:text="@string/placeholder_line_denomination" />
 
             <ListView
                 android:id="@+id/interestPointsId"
@@ -165,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="bottom|end"
-                    android:text="@string/placeholder_headway" />
+                    android:text="@string/label_headway" />
 
                 <TextView
                     android:id="@+id/headwayMinutes"
