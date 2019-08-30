@@ -7,8 +7,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.Line;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.tasks.GetLineTask;
+import br.com.vidal.santoandreonbus.models.Line;
+import br.com.vidal.santoandreonbus.tasks.GetLineTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
                     placeFragment(new GeneralFragment());
                     return true;
                 case R.id.navigation_itinerary:
-                    // TODO: Implement ItineraryFragment
+                    placeFragment(new ItineraryFragment());
                     return true;
                 case R.id.navigation_fleet:
-                    // TODO: Implement NavigationFragment
+                    placeFragment(new FleetFragment());
                     return true;
             }
             return false;
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         GetLineTask task = new GetLineTask(this);
         task.execute("I-01");
     }
-
 
     public void retrieveLineFromAsyncTask(Line line) {
         this.line = line;
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fragmentContainerId, fragment)
+                .replace(R.id.fragmentContainerId, fragment)
                 .commit();
     }
 }

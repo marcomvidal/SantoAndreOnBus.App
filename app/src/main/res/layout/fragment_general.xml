@@ -19,31 +19,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="4dp">
-
-            <TextView
-                android:id="@+id/fromwardsLabelId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/label_fromwards"
-                android:textStyle="normal|bold" />
-
-            <TextView
-                android:id="@+id/fromwardsId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/placeholder_fromwards" />
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- Towards -->
     <android.support.v7.widget.CardView
@@ -70,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/label_towards"
+                android:text="@string/label_title"
                 android:textStyle="normal|bold" />
 
             <TextView
@@ -79,6 +55,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/placeholder_towards" />
+
+            <TextView
+                android:id="@+id/fromwardsId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/placeholder_fromwards" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

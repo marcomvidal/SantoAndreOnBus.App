@@ -1,4 +1,4 @@
-package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.utilities;
+package br.com.vidal.santoandreonbus.utilities;
 
 import android.net.SSLCertificateSocketFactory;
 import java.net.URL;

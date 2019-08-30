@@ -1,4 +1,4 @@
-package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models;
+package br.com.vidal.santoandreonbus.models;
 
 
 import android.support.annotation.NonNull;

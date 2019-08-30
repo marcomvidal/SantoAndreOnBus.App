@@ -1,18 +1,15 @@
-package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.tasks;
+package br.com.vidal.santoandreonbus.tasks;
 
 
 import br.com.vidal.santoandreonbus.MainActivity;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.InterestPoint;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models.Line;
-import br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.utilities.APIClient;
+import br.com.vidal.santoandreonbus.models.Line;
+import br.com.vidal.santoandreonbus.utilities.APIClient;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 
 public class GetLineTask extends AsyncTask<String, Object, Line> {

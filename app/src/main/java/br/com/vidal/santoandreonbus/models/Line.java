@@ -1,4 +1,4 @@
-package br.com.vidal.santoandreonbus.br.com.vidal.santoandreonbus.models;
+package br.com.vidal.santoandreonbus.models;
 
 
 import java.io.Serializable;
@@ -13,7 +13,10 @@ public class Line implements Serializable {
     public String fromwards;
     public String towards;
     public int peakHeadway;
+    public Company company;
     public List<InterestPoint> interestPoints;
+    public List<Place> places;
+    public List<LineVehicle> lineVehicles;
 
     public String getDenomination() {
         return this.letter + "-" + this.number;
