@@ -10,9 +10,15 @@
     <string name="label_title">Denominação:</string>
     <string name="placeholder_fromwards">Origem</string>
     <string name="placeholder_towards">Destino</string>
+    <string name="label_vehicle">Tipos de veículos</string>
+    <string name="placeholder_vehicle">Veículos</string>
     <string name="placeholder_line_denomination">I-00</string>
+    <string name="label_company">Empresa:</string>
+    <string name="placeholder_company">Empresa</string>
+    <string name="label_prefix">Prefixos:</string>
+    <string name="placeholder_prefix">Prefixos</string>
     <string name="label_headway">Intervalo:</string>
-    <string name="label_minutes">min.</string>
+    <string name="placeholder_headway">%1$s min.</string>
 
     <!-- Messages -->
     <string name="network_connection_failure">"Não foi possível obter os dados na Internet."</string>

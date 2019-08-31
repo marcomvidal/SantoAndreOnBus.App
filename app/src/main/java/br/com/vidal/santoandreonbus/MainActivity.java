@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_itinerary:
                     placeFragment(new ItineraryFragment());
                     return true;
-                case R.id.navigation_fleet:
-                    placeFragment(new FleetFragment());
-                    return true;
             }
             return false;
         }
