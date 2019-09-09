@@ -1,7 +1,8 @@
 package br.com.vidal.santoandreonbus.tasks;
 
 
-import br.com.vidal.santoandreonbus.MainActivity;
+import br.com.vidal.santoandreonbus.LineActivity;
+import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.utilities.APIClient;
 import android.app.ProgressDialog;
@@ -12,14 +13,14 @@ import com.google.gson.Gson;
 import java.lang.ref.WeakReference;
 
 
-public class GetLineTask extends AsyncTask<String, Object, Line> {
+public class GetLineTask extends AsyncTask<String, Void, Line> {
 
     private ProgressDialog dialog;
-    private final WeakReference<MainActivity> reference;
+    private final WeakReference<LineActivity> reference;
     private APIClient client;
     private Gson gson;
 
-    public GetLineTask(MainActivity activity) {
+    public GetLineTask(LineActivity activity) {
         this.reference = new WeakReference<>(activity);
         this.client = new APIClient();
         this.gson = new Gson();
@@ -27,9 +28,11 @@ public class GetLineTask extends AsyncTask<String, Object, Line> {
 
     @Override
     protected void onPreExecute() {
-        this.dialog = new ProgressDialog(reference.get());
-        dialog.setTitle("Informações da linha");
-        dialog.setMessage("Carregando. Por favor, aguarde...");
+        LineActivity activity = reference.get();
+
+        this.dialog = new ProgressDialog(activity);
+        dialog.setTitle(activity.getResources().getString(R.string.progress_title));
+        dialog.setMessage(activity.getResources().getString(R.string.progress_message));
         dialog.show();
     }
 
@@ -39,9 +42,7 @@ public class GetLineTask extends AsyncTask<String, Object, Line> {
 
         try {
             String json = client.get(urn);
-            Line line = gson.fromJson(json, Line.class);
-
-            return line;
+            return gson.fromJson(json, Line.class);
         } catch (Exception e) {
             return new Line();
         }
@@ -50,7 +51,7 @@ public class GetLineTask extends AsyncTask<String, Object, Line> {
     @Override
     protected void onPostExecute(Line line) {
         dialog.dismiss();
-        MainActivity activity = reference.get();
+        LineActivity activity = reference.get();
         activity.retrieveLineFromAsyncTask(line);
     }
 }

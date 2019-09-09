@@ -10,8 +10,7 @@
     <string name="label_title">Denominação:</string>
     <string name="placeholder_fromwards">Origem</string>
     <string name="placeholder_towards">Destino</string>
-    <string name="label_vehicle">Tipos de veículos</string>
-    <string name="placeholder_vehicle">Veículos</string>
+    <string name="label_vehicle">Veículos:</string>
     <string name="placeholder_line_denomination">I-00</string>
     <string name="label_company">Empresa:</string>
     <string name="placeholder_company">Empresa</string>
@@ -29,4 +28,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Image accessibility descriptions -->
+    <string name="description_interest_point">Ícone de localização</string>
+    <string name="description_headway">Ícone de relógio</string>
 </resources>

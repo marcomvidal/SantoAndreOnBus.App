@@ -15,7 +15,7 @@ import br.com.vidal.santoandreonbus.models.Line;
 public class ItineraryFragment extends Fragment {
 
     private Line line;
-    public ListView places;
+    private ListView places;
 
     public ItineraryFragment() {}
 
@@ -40,6 +40,8 @@ public class ItineraryFragment extends Fragment {
     }
 
     private void fillInterestPoints() {
+        if (getContext() == null) { return; }
+
         places.setAdapter(new ArrayAdapter<>(
                 getContext(),
                 android.R.layout.simple_list_item_1,

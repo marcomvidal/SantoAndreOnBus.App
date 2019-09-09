@@ -1,39 +1,45 @@
 <resources>
-
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarSize">80dp</item>
     </style>
 
-    <!-- Line denomination frame. -->
-    <style name="LineDenominationFrame">
-        <item name="android:background">@color/colorLineDenominationBackground</item>
-        <item name="android:textColor">@color/colorLineDenominationText</item>
-        <item name="android:textSize">@dimen/line_denomination_text</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textStyle">normal|bold</item>
+    <!-- ScrollView -->
+    <style name="ScrollView">
+        <item name="android:fillViewport">true</item>
     </style>
 
-    <!-- Cards. -->
+    <!-- Cards -->
     <style name="Card" parent="Base.CardView">
-        <item name="android:layout_margin">8dp</item>
-        <item name="cardElevation">1dp</item>
-        <item name="cardCornerRadius">0dp</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
     </style>
 
     <style name="CardLinearLayout">
-        <item name="android:padding">4dp</item>
+        <item name="android:padding">@dimen/card_linear_layout_padding</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="CardLabel">
         <item name="android:textStyle">bold|normal</item>
         <item name="android:gravity">center</item>
     </style>
+
     <style name="CardData">
         <item name="android:textStyle">normal</item>
         <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_size_information</item>
+    </style>
+
+    <!-- Icons -->
+    <style name="Icons">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginRight">4dp</item>
     </style>
 </resources>

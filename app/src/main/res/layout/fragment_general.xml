@@ -1,185 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GeneralFragment"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".GeneralFragment">
 
-    <!-- Fromwards and Towards -->
-
-    <!-- Line Denomination and Interest Points -->
-    <android.support.v7.widget.CardView
-        android:id="@+id/lineDenominationAndInterestPointsCardId"
-        style="@style/Card"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/companyCardId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleCardId">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/lineDenominationAndInterestPointsLinearLayoutId"
+        <!-- Interest Points -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/InterestPointsCardId"
+            style="@style/Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="0dp">
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/lineDenominationId"
-                style="@style/LineDenominationFrame"
+            <LinearLayout
+                android:id="@+id/InterestPointsLinearLayoutId"
+                style="@style/CardLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:minHeight="110dp"
-                android:padding="0dp"
-                android:text="@string/placeholder_line_denomination"
-                app:autoSizeTextType="none" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <ListView
-                android:id="@+id/interestPointsId"
+                <ImageView
+                    android:id="@+id/interestPointsIcon"
+                    style="@style/Icons"
+                    android:contentDescription="@string/description_interest_point"
+                    app:srcCompat="@drawable/ic_place_foreground" />
+
+                <LinearLayout
+                    android:id="@+id/interestPointsContainerId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/interestPointsLabelId"
+                        style="@style/CardLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pontos de interesse:" />
+
+                    <LinearLayout
+                        android:id="@+id/interestPointsId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- Vehicle types -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/vehicleCardId"
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/headwayCardId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/InterestPointsCardId">
+
+            <LinearLayout
+                android:id="@+id/vehicleLinearLayoutId"
+                style="@style/CardLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/vehicleLabelId"
+                    style="@style/CardLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_vehicle" />
+
+                <LinearLayout
+                    android:id="@+id/vehiclesId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"></LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- Headway -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/headwayCardId"
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/companyCardId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/headwayLinearLayoutId"
+                style="@style/CardLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:divider="@android:color/transparent" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/headwayIconId"
+                    style="@style/Icons"
+                    android:contentDescription="@string/description_headway"
+                    app:srcCompat="@drawable/ic_clock_foreground" />
 
-    </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:id="@+id/headwayVerticalLayoutId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-    <!-- Company -->
-    <android.support.v7.widget.CardView
-        android:id="@+id/companyCardId"
-        style="@style/Card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/prefixCardId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+                    <TextView
+                        android:id="@+id/headwayLabelId"
+                        style="@style/CardLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_headway" />
 
-        <LinearLayout
-            android:id="@+id/companyLinearLayoutId"
-            style="@style/CardLinearLayout"
+                    <TextView
+                        android:id="@+id/headwayId"
+                        style="@style/CardData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder_headway" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- Company -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/companyCardId"
+            style="@style/Card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/prefixCardId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/companyLabelId"
-                style="@style/CardLabel"
+            <LinearLayout
+                android:id="@+id/companyLinearLayoutId"
+                style="@style/CardLinearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_company" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/companyId"
-                style="@style/CardData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_company" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                <ImageView
+                    android:id="@+id/companyIconId"
+                    style="@style/Icons"
+                    android:contentDescription="@string/description_headway"
+                    app:srcCompat="@drawable/ic_company_foreground" />
 
-    <!-- Headway -->
-    <android.support.v7.widget.CardView
-        android:id="@+id/headwayCardId"
-        style="@style/Card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+                <LinearLayout
+                    android:id="@+id/companyVerticalLayoutId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/headwayLinearLayoutId"
-            style="@style/CardLinearLayout"
+                    <TextView
+                        android:id="@+id/companyLabelId"
+                        style="@style/CardLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_company" />
+
+                    <TextView
+                        android:id="@+id/companyId"
+                        style="@style/CardData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder_company" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- Prefixes -->
+        <android.support.v7.widget.CardView
+            android:id="@+id/prefixCardId"
+            style="@style/Card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/headwayLabelId"
-                style="@style/CardLabel"
+            <LinearLayout
+                android:id="@+id/prefixLinearLayoutId"
+                style="@style/CardLinearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_headway" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/headwayId"
-                style="@style/CardData"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/placeholder_headway" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                <ImageView
+                    android:id="@+id/prefixIconId"
+                    style="@style/Icons"
+                    android:contentDescription="@string/description_headway"
+                    app:srcCompat="@drawable/ic_prefix_foreground" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/prefixCardId"
-        style="@style/Card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/headwayCardId"
-        tools:layout_editor_absoluteX="96dp">
+                <LinearLayout
+                    android:id="@+id/prefixVerticalLayoutId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            style="@style/CardLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/prefixLabelId"
+                        style="@style/CardLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_prefix" />
 
-            <TextView
-                android:id="@+id/prefixLabelId"
-                style="@style/CardLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_prefix" />
+                    <TextView
+                        android:id="@+id/prefixId"
+                        style="@style/CardData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/placeholder_prefix" />
 
-            <TextView
-                android:id="@+id/prefixId"
-                style="@style/CardData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_prefix" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/vehicleCardId"
-        style="@style/Card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp">
-
-        <LinearLayout
-            android:id="@+id/vehicleLinearLayoutId"
-            style="@style/CardLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/vehicleLabelId"
-                style="@style/CardLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_vehicle" />
-
-            <TextView
-                android:id="@+id/vehicleId"
-                style="@style/CardData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_vehicle" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-</android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
