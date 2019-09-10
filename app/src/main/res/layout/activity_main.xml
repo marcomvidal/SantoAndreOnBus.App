@@ -10,6 +10,8 @@
         android:id="@+id/linesId"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         tools:layout_editor_absoluteX="54dp"
         tools:layout_editor_absoluteY="188dp" />
 </android.support.constraint.ConstraintLayout>

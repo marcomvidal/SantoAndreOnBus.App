@@ -4,7 +4,36 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarSize">80dp</item>
+        <item name="actionBarSize">60dp</item>
+    </style>
+
+    <!-- Line denomination for ActionBar -->
+    <style name="LineDenomination">
+        <item name="android:text">@string/placeholder_line_denomination</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <!-- Line denomination for ListView -->
+    <style name="LineDenominationForListView" parent="LineDenomination">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- Line fromwards and towards container -->
+    <style name="LineFromwardsTowardsContainer">
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- Line fromwards and towards text -->
+    <style name="LineFromwardsTowards">
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- ScrollView -->
@@ -27,6 +56,7 @@
     <style name="CardLabel">
         <item name="android:textStyle">bold|normal</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="CardData">
@@ -41,5 +71,6 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_marginRight">4dp</item>
+        <item name="android:tint">@color/colorPrimary</item>
     </style>
 </resources>

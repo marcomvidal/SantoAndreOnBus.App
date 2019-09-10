@@ -2,48 +2,46 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/barLineDenominationId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingTop="0dp"
-        android:text="@string/placeholder_line_denomination"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
+        style="@style/LineFromwardsTowardsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_weight="2"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/barLineDenominationId"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/barLineFromwardsId"
+            style="@style/LineFromwardsTowards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="0dp"
             android:text="@string/placeholder_fromwards"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/barLineTowardsId"
+            style="@style/LineFromwardsTowards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/placeholder_towards"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@android:color/white" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/barLineDenominationId"
+        style="@style/LineDenomination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/placeholder_line_denomination"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

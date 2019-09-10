@@ -1,6 +1,8 @@
 package br.com.vidal.santoandreonbus;
 
 
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.TooltipCompat;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,6 @@ import android.widget.TextView;
 import br.com.vidal.santoandreonbus.models.InterestPoint;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.models.LineVehicle;
-import br.com.vidal.santoandreonbus.models.Vehicle;
 
 public class GeneralFragment extends Fragment {
 
@@ -31,13 +31,16 @@ public class GeneralFragment extends Fragment {
     private LinearLayout vehicles;
     private Line line;
 
-    public GeneralFragment() {}
+    public GeneralFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
-        if (arguments != null) { this.line = (Line) getArguments().getSerializable("line"); }
+        if (arguments != null) {
+            this.line = (Line) getArguments().getSerializable("line");
+        }
 
         return inflater.inflate(R.layout.fragment_general, container, false);
     }
@@ -67,46 +70,53 @@ public class GeneralFragment extends Fragment {
     }
 
     private void setActionBarText() {
-        AppCompatActivity activity = (AppCompatActivity)getActivity();
-        if (activity == null) { return; }
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity == null) {
+            return;
+        }
         ActionBar actionBar = activity.getSupportActionBar();
-        if (actionBar == null ) { return; }
+        if (actionBar == null) {
+            return;
+        }
 
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setCustomView(R.layout.line_action_bar);
+
         View view = actionBar.getCustomView();
-
         TextView denomination = view.findViewById(R.id.barLineDenominationId);
-        denomination.setText(line.getDenomination());
-
         TextView fromwards = view.findViewById(R.id.barLineFromwardsId);
-        fromwards.setText(line.fromwards);
-
         TextView towards = view.findViewById(R.id.barLineTowardsId);
+
+        denomination.setText(line.getDenomination());
+        fromwards.setText(line.fromwards);
         towards.setText(line.towards);
     }
 
     private void drawVehicleIcons() {
         for (LineVehicle lineVehicle : line.lineVehicles) {
             ImageView vehicleIcon = new ImageView(getContext());
-            vehicleIcon.setContentDescription(lineVehicle.vehicle.name);
-            TooltipCompat.setTooltipText(vehicleIcon, lineVehicle.vehicle.name);
-            vehicleIcon.setAdjustViewBounds(true);
+            Resources resources = getResources();
 
-            int iconSize = Math.round(getResources().getDimension(R.dimen.vehicle_icon_max_size));
+            vehicleIcon.setAdjustViewBounds(true);
+            vehicleIcon.setContentDescription(lineVehicle.vehicle.name.toString());
+            TooltipCompat.setTooltipText(vehicleIcon, lineVehicle.vehicle.name.toString());
+            vehicleIcon.setImageTintList(ColorStateList.valueOf(
+                    resources.getColor(android.R.color.secondary_text_light_nodisable)));
+
+            int iconSize = Math.round(resources.getDimension(R.dimen.vehicle_icon_max_size));
             vehicleIcon.setMaxHeight(iconSize);
             vehicleIcon.setMaxWidth(iconSize);
 
-            int iconPadding = Math.round(getResources().getDimension(R.dimen.vehicle_icon_padding));
+            int iconPadding = Math.round(resources.getDimension(R.dimen.vehicle_icon_padding));
             vehicleIcon.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
 
             switch (lineVehicle.vehicle.name) {
-                case "Microônibus":
+                case Microonibus:
                     vehicleIcon.setImageResource(R.drawable.ic_microonibus_foreground); break;
-                case "Médio":
+                case Medio:
                     vehicleIcon.setImageResource(R.drawable.ic_micrao_foreground); break;
-                case "Padrão":
+                case Padrao:
                     vehicleIcon.setImageResource(R.drawable.ic_onibus_foreground); break;
             }
 

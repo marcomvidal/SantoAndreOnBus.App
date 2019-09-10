@@ -1,6 +1,7 @@
 package br.com.vidal.santoandreonbus;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -37,8 +38,11 @@ public class LineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line);
         setViews();
+
+        Intent intent = getIntent();
+        if (!intent.hasExtra("lineDenomination")) { return; }
         GetLineTask task = new GetLineTask(this);
-        task.execute("I-01");
+        task.execute(intent.getExtras().getString("lineDenomination"));
     }
 
     public void retrieveLineFromAsyncTask(Line line) {
