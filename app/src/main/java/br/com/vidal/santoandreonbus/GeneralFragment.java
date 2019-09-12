@@ -1,6 +1,5 @@
 package br.com.vidal.santoandreonbus;
 
-
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -31,16 +30,13 @@ public class GeneralFragment extends Fragment {
     private LinearLayout vehicles;
     private Line line;
 
-    public GeneralFragment() {
-    }
+    public GeneralFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
-        if (arguments != null) {
-            this.line = (Line) getArguments().getSerializable("line");
-        }
+        if (arguments != null) { this.line = (Line) arguments.getSerializable("line"); }
 
         return inflater.inflate(R.layout.fragment_general, container, false);
     }
@@ -71,17 +67,13 @@ public class GeneralFragment extends Fragment {
 
     private void setActionBarText() {
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        if (activity == null) {
-            return;
-        }
+        if (activity == null) { return; }
         ActionBar actionBar = activity.getSupportActionBar();
-        if (actionBar == null) {
-            return;
-        }
+        if (actionBar == null) { return; }
 
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setCustomView(R.layout.line_action_bar);
+        actionBar.setCustomView(R.layout.action_bar_line);
 
         View view = actionBar.getCustomView();
         TextView denomination = view.findViewById(R.id.barLineDenominationId);

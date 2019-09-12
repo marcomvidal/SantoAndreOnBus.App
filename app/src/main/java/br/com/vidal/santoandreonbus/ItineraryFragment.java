@@ -23,7 +23,7 @@ public class ItineraryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Bundle arguments = getArguments();
-        if (arguments != null) { this.line = (Line) getArguments().getSerializable("line"); }
+        if (arguments != null) { this.line = (Line) arguments.getSerializable("line"); }
 
         return inflater.inflate(R.layout.fragment_itinerary, container, false);
     }

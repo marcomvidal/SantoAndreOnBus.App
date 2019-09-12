@@ -1,6 +1,5 @@
 package br.com.vidal.santoandreonbus.tasks;
 
-
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
@@ -16,9 +15,9 @@ import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.utilities.APIClient;
 
+public class GetAllLinesTask extends AsyncTask<Void, Void, Line[]> {
 
-public class GetAllLinesTask extends AsyncTask<Void, Void, List<Line>> {
-
+    private static final String ENDPOINT = "lines/";
     private WeakReference<LinesRetrievableActivity> reference;
     private boolean showProgressBar;
     private APIClient client;
@@ -44,19 +43,17 @@ public class GetAllLinesTask extends AsyncTask<Void, Void, List<Line>> {
     }
 
     @Override
-    protected List<Line> doInBackground(Void ...params) {
-        String urn = "lines/";
-
+    protected Line[] doInBackground(Void ...params) {
         try {
-            String json = client.get(urn);
-            return gson.fromJson(json, (new TypeToken<List<Line>>() {}.getType()));
+            String json = client.get(ENDPOINT);
+            return gson.fromJson(json, Line[].class);
         } catch (Exception e) {
-            return new ArrayList<>();
+            return new Line[] {};
         }
     }
 
     @Override
-    protected void onPostExecute(List<Line> lines) {
+    protected void onPostExecute(Line[] lines) {
         if (showProgressBar) { dialog.dismiss(); }
 
         LinesRetrievableActivity activity = reference.get();

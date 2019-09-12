@@ -1,7 +1,7 @@
 package br.com.vidal.santoandreonbus;
 
+import android.support.v7.app.ActionBar;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import br.com.vidal.santoandreonbus.adapters.LinesAdapter;
+import br.com.vidal.santoandreonbus.utilities.LinesAdapter;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.tasks.GetAllLinesTask;
 
@@ -22,7 +22,6 @@ public class MainActivity extends LinesRetrievableActivity {
 
     private List<Line> lines;
     private ListView linesList;
-    private EditText searchField;
     private LinesAdapter adapter;
 
     private AdapterView.OnItemClickListener listViewItemClick = new AdapterView.OnItemClickListener() {
@@ -52,12 +51,23 @@ public class MainActivity extends LinesRetrievableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setActionBarText();
         setViews();
+        fetchData(getIntent());
+    }
 
-        Intent intent = getIntent();
+    private void setActionBarText() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar == null) { return; }
 
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setCustomView(R.layout.action_bar_main);
+    }
+
+    private void fetchData(Intent intent) {
         if (intent.hasExtra("lines")) {
-            ArrayList<Line> lines = (ArrayList) intent.getSerializableExtra("lines");
+            Line[] lines = (Line[]) intent.getSerializableExtra("lines");
             retrieveAllLinesCallback(lines);
         }
 
@@ -66,9 +76,9 @@ public class MainActivity extends LinesRetrievableActivity {
     }
 
     @Override
-    public void retrieveAllLinesCallback(List<Line> lines) {
-        this.lines = lines;
-        adapter = new LinesAdapter(this, lines);
+    public void retrieveAllLinesCallback(Line[] lines) {
+        this.lines = new ArrayList<>(Arrays.asList(lines));
+        adapter = new LinesAdapter(this, this.lines);
         linesList.setAdapter(adapter);
     }
 
@@ -76,7 +86,7 @@ public class MainActivity extends LinesRetrievableActivity {
         linesList = findViewById(R.id.linesId);
         linesList.setOnItemClickListener(listViewItemClick);
 
-        searchField = findViewById(R.id.searchFieldId);
+        EditText searchField = findViewById(R.id.searchFieldId);
         searchField.addTextChangedListener(lineSearch);
     }
 }

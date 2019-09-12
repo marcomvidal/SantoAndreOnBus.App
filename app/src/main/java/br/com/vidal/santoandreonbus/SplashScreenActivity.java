@@ -1,7 +1,6 @@
 package br.com.vidal.santoandreonbus;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -22,9 +21,9 @@ public class SplashScreenActivity extends LinesRetrievableActivity {
     }
 
     @Override
-    public void retrieveAllLinesCallback(List<Line> lines) {
+    public void retrieveAllLinesCallback(Line[] lines) {
         Intent intent = new Intent(this, MainActivity.class)
-                .putExtra("lines", (ArrayList) lines);
+                .putExtra("lines", lines);
 
         startActivity(intent);
     }

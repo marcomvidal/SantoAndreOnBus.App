@@ -39,9 +39,7 @@ public class APIClient {
     private HostnameVerifier ignoreSSLHostnameVerifier() {
         return new HostnameVerifier() {
             @Override
-            public boolean verify(String hostname, SSLSession session) {
-                return true;
-            }
+            public boolean verify(String hostname, SSLSession session) { return true; }
         };
     }
 }

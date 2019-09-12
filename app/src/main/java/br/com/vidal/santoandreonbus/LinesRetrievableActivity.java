@@ -7,5 +7,5 @@ import java.util.List;
 import br.com.vidal.santoandreonbus.models.Line;
 
 public abstract class LinesRetrievableActivity extends AppCompatActivity {
-    public abstract void retrieveAllLinesCallback(List<Line> lines);
+    public abstract void retrieveAllLinesCallback(Line[] lines);
 }

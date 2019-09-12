@@ -1,6 +1,5 @@
 package br.com.vidal.santoandreonbus;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.tasks.GetLineTask;
-
 
 public class LineActivity extends AppCompatActivity {
 
@@ -38,10 +36,13 @@ public class LineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line);
         setViews();
+        fetchData(getIntent());
+    }
 
-        Intent intent = getIntent();
+    private void fetchData(Intent intent) {
         if (!intent.hasExtra("lineDenomination")) { return; }
         GetLineTask task = new GetLineTask(this);
+
         task.execute(intent.getExtras().getString("lineDenomination"));
     }
 

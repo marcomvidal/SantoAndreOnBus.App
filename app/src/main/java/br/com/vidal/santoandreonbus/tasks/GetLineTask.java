@@ -1,6 +1,5 @@
 package br.com.vidal.santoandreonbus.tasks;
 
-
 import br.com.vidal.santoandreonbus.LineActivity;
 import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.models.Line;
@@ -12,9 +11,9 @@ import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
 
-
 public class GetLineTask extends AsyncTask<String, Void, Line> {
 
+    private static final String ENDPOINT = "lines/";
     private ProgressDialog dialog;
     private final WeakReference<LineActivity> reference;
     private APIClient client;
@@ -38,7 +37,7 @@ public class GetLineTask extends AsyncTask<String, Void, Line> {
 
     @Override
     protected Line doInBackground(String... params) {
-        String urn = "lines/" + params[0];
+        String urn = ENDPOINT + params[0];
 
         try {
             String json = client.get(urn);

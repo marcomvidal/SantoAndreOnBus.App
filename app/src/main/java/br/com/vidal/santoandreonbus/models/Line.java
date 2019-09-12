@@ -1,9 +1,7 @@
 package br.com.vidal.santoandreonbus.models;
 
-
 import java.io.Serializable;
 import java.util.List;
-
 
 public class Line implements Serializable {
 
@@ -32,17 +30,5 @@ public class Line implements Serializable {
         }
 
         return prefixes.toString();
-    }
-
-    public String getVehiclesSeparatedByComma() {
-        StringBuilder vehicles = new StringBuilder();
-
-        for (int i = 0; i < this.lineVehicles.size(); i++) {
-            vehicles.append(this.lineVehicles.get(i).vehicle.name);
-
-            if (i < this.lineVehicles.size() - 1) vehicles.append(", ");
-        }
-
-        return vehicles.toString();
     }
 }

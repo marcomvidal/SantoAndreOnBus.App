@@ -1,7 +1,6 @@
-package br.com.vidal.santoandreonbus.adapters;
+package br.com.vidal.santoandreonbus.utilities;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,8 +9,8 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 import br.com.vidal.santoandreonbus.R;
@@ -19,9 +18,9 @@ import br.com.vidal.santoandreonbus.models.Line;
 
 public class LinesAdapter extends BaseAdapter implements Filterable {
 
-    public Activity activity;
-    public List<Line> lines;
-    public List<Line> allLines;
+    private Activity activity;
+    private List<Line> lines;
+    private List<Line> allLines;
 
     public LinesAdapter(Activity activity, List<Line> lines) {
         this.activity = activity;
@@ -41,7 +40,7 @@ public class LinesAdapter extends BaseAdapter implements Filterable {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = activity.getLayoutInflater().inflate(
-                R.layout.lines_list, parent, false);
+                R.layout.list_lines, parent, false);
 
         Line line = lines.get(position);
         TextView denomination = view.findViewById(R.id.listLineDenominationId);
