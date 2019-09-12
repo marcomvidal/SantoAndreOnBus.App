@@ -27,6 +27,15 @@
         <item name="android:progressTint">@android:color/white</item>
     </style>
 
+    <!-- Title for default ActionBar -->
+    <style name="TitleForActionBar">
+        <item name="android:layout_marginStart">16sp</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- Line denomination for ActionBar -->
     <style name="LineDenomination">
         <item name="android:text">@string/placeholder_line_denomination</item>
