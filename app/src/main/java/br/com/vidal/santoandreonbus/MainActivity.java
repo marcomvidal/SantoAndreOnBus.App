@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.vidal.santoandreonbus.utilities.LinesAdapter;
+import br.com.vidal.santoandreonbus.dialogs.ConnectionFailedDialog;
+import br.com.vidal.santoandreonbus.utilities.LineAdapter;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.tasks.GetAllLinesTask;
 
@@ -22,7 +23,7 @@ public class MainActivity extends LinesRetrievableActivity {
 
     private List<Line> lines;
     private ListView linesList;
-    private LinesAdapter adapter;
+    private LineAdapter adapter;
 
     private AdapterView.OnItemClickListener listViewItemClick = new AdapterView.OnItemClickListener() {
         @Override
@@ -77,8 +78,10 @@ public class MainActivity extends LinesRetrievableActivity {
 
     @Override
     public void retrieveAllLinesCallback(Line[] lines) {
+        if (lines == null) { (new ConnectionFailedDialog(this)).show(); return; }
+
         this.lines = new ArrayList<>(Arrays.asList(lines));
-        adapter = new LinesAdapter(this, this.lines);
+        adapter = new LineAdapter(this, this.lines);
         linesList.setAdapter(adapter);
     }
 

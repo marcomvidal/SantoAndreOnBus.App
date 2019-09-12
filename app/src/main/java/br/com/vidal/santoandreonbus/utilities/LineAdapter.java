@@ -16,13 +16,13 @@ import java.util.regex.Pattern;
 import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.models.Line;
 
-public class LinesAdapter extends BaseAdapter implements Filterable {
+public class LineAdapter extends BaseAdapter implements Filterable {
 
     private Activity activity;
     private List<Line> lines;
     private List<Line> allLines;
 
-    public LinesAdapter(Activity activity, List<Line> lines) {
+    public LineAdapter(Activity activity, List<Line> lines) {
         this.activity = activity;
         this.lines = lines;
         this.allLines = lines;

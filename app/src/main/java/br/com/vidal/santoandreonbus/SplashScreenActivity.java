@@ -3,11 +3,9 @@ package br.com.vidal.santoandreonbus;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.tasks.GetAllLinesTask;
+import br.com.vidal.santoandreonbus.dialogs.ConnectionFailedDialog;
 
 public class SplashScreenActivity extends LinesRetrievableActivity {
 
@@ -22,6 +20,8 @@ public class SplashScreenActivity extends LinesRetrievableActivity {
 
     @Override
     public void retrieveAllLinesCallback(Line[] lines) {
+        if (lines == null) { (new ConnectionFailedDialog(this)).show(); return; }
+
         Intent intent = new Intent(this, MainActivity.class)
                 .putExtra("lines", lines);
 

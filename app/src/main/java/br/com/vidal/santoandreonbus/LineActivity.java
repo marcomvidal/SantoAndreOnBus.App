@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.tasks.GetLineTask;
+import br.com.vidal.santoandreonbus.dialogs.ConnectionFailedDialog;
 
 public class LineActivity extends AppCompatActivity {
 
@@ -46,7 +47,9 @@ public class LineActivity extends AppCompatActivity {
         task.execute(intent.getExtras().getString("lineDenomination"));
     }
 
-    public void retrieveLineFromAsyncTask(Line line) {
+    public void retrieveLineCallback(Line line) {
+        if (line == null) { (new ConnectionFailedDialog(this)).show(); return; }
+
         this.line = line;
         placeFragment(new GeneralFragment());
     }

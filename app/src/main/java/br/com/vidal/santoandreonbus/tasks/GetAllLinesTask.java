@@ -4,28 +4,25 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 import br.com.vidal.santoandreonbus.LinesRetrievableActivity;
-import br.com.vidal.santoandreonbus.R;
+import br.com.vidal.santoandreonbus.dialogs.FetchingAPIDialog;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.utilities.APIClient;
 
 public class GetAllLinesTask extends AsyncTask<Void, Void, Line[]> {
 
     private static final String ENDPOINT = "lines/";
-    private WeakReference<LinesRetrievableActivity> reference;
+    private WeakReference<LinesRetrievableActivity> activityReference;
     private boolean showProgressBar;
     private APIClient client;
     private Gson gson;
     private ProgressDialog dialog;
 
     public GetAllLinesTask(LinesRetrievableActivity activity, boolean showProgressBar) {
-        this.reference = new WeakReference<>(activity);
+        this.activityReference = new WeakReference<>(activity);
         this.showProgressBar = showProgressBar;
         this.client = new APIClient();
         this.gson = new Gson();
@@ -35,10 +32,7 @@ public class GetAllLinesTask extends AsyncTask<Void, Void, Line[]> {
     protected void onPreExecute() {
         if (!showProgressBar) { return; }
 
-        LinesRetrievableActivity activity = reference.get();
-        this.dialog = new ProgressDialog(activity);
-        dialog.setTitle(activity.getResources().getString(R.string.progress_title));
-        dialog.setMessage(activity.getResources().getString(R.string.progress_message));
+        this.dialog = new FetchingAPIDialog(activityReference.get());
         dialog.show();
     }
 
@@ -48,7 +42,7 @@ public class GetAllLinesTask extends AsyncTask<Void, Void, Line[]> {
             String json = client.get(ENDPOINT);
             return gson.fromJson(json, Line[].class);
         } catch (Exception e) {
-            return new Line[] {};
+            return null;
         }
     }
 
@@ -56,7 +50,6 @@ public class GetAllLinesTask extends AsyncTask<Void, Void, Line[]> {
     protected void onPostExecute(Line[] lines) {
         if (showProgressBar) { dialog.dismiss(); }
 
-        LinesRetrievableActivity activity = reference.get();
-        activity.retrieveAllLinesCallback(lines);
+        activityReference.get().retrieveAllLinesCallback(lines);
     }
 }

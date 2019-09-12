@@ -11,6 +11,7 @@ import javax.net.ssl.SSLSession;
 public class APIClient {
     private static final String URL = "https://192.168.15.12:5001/api/";
     private static final String CONTENT_TYPE = "application/json";
+    private static final int TIMEOUT = 5000;
 
     public String get(String urn) throws Exception {
         URL uri = new URL(URL + urn);
@@ -22,6 +23,7 @@ public class APIClient {
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Accept", CONTENT_TYPE);
         connection.setHostnameVerifier(ignoreSSLHostnameVerifier());
+        connection.setConnectTimeout(TIMEOUT);
         connection.connect();
 
         Scanner scanner = new Scanner(connection.getInputStream());
