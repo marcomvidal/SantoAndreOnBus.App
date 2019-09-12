@@ -82,8 +82,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="D:\Pictures\Saved Pictures\SantoAndreOnBus - Ícones\microonibus.svg" />
-                                      <entry key="outputName" value="ic_microonibus" />
+                                      <entry key="foregroundImage" value="D:\Pictures\Saved Pictures\SantoAndreOnBus - Ícones\logotipo.svg" />
+                                      <entry key="outputName" value="ic_logo" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -156,7 +156,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_library_books_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_directions_bus_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -166,7 +166,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_library_books_black_24dp" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_logo_24dp" />
                             <entry key="sourceFile" value="C:\Users\Marco" />
                           </map>
                         </option>

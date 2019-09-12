@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#003B8F</color>
     <color name="colorPrimaryDark">#002B67</color>
-    <color name="colorAccent">#5A897A</color>
+    <color name="colorAccent">#BBBBBB</color>
 
     <!-- Line denomination frame. -->
     <color name="colorLineDenominationText">#FFFFFF</color>

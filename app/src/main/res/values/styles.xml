@@ -7,6 +7,26 @@
         <item name="actionBarSize">60dp</item>
     </style>
 
+    <!-- Splash screen -->
+    <style name="SplashScreenIcon">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">175dp</item>
+        <item name="srcCompat">@drawable/ic_logo_24dp</item>
+    </style>
+
+    <style name="SplashScreenTitle">
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SplashScreenSpinner">
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:progressTint">@android:color/white</item>
+    </style>
+
     <!-- Line denomination for ActionBar -->
     <style name="LineDenomination">
         <item name="android:text">@string/placeholder_line_denomination</item>

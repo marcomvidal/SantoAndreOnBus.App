@@ -11,8 +11,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.vidal.santoandreonbus.LineActivity;
-import br.com.vidal.santoandreonbus.MainActivity;
+import br.com.vidal.santoandreonbus.LinesRetrievableActivity;
 import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.models.Line;
 import br.com.vidal.santoandreonbus.utilities.APIClient;
@@ -20,21 +19,24 @@ import br.com.vidal.santoandreonbus.utilities.APIClient;
 
 public class GetAllLinesTask extends AsyncTask<Void, Void, List<Line>> {
 
-    private ProgressDialog dialog;
-    private final WeakReference<MainActivity> reference;
+    private WeakReference<LinesRetrievableActivity> reference;
+    private boolean showProgressBar;
     private APIClient client;
     private Gson gson;
+    private ProgressDialog dialog;
 
-    public GetAllLinesTask(MainActivity activity) {
+    public GetAllLinesTask(LinesRetrievableActivity activity, boolean showProgressBar) {
         this.reference = new WeakReference<>(activity);
+        this.showProgressBar = showProgressBar;
         this.client = new APIClient();
         this.gson = new Gson();
     }
 
     @Override
     protected void onPreExecute() {
-        MainActivity activity = reference.get();
+        if (!showProgressBar) { return; }
 
+        LinesRetrievableActivity activity = reference.get();
         this.dialog = new ProgressDialog(activity);
         dialog.setTitle(activity.getResources().getString(R.string.progress_title));
         dialog.setMessage(activity.getResources().getString(R.string.progress_message));
@@ -55,8 +57,9 @@ public class GetAllLinesTask extends AsyncTask<Void, Void, List<Line>> {
 
     @Override
     protected void onPostExecute(List<Line> lines) {
-        dialog.dismiss();
-        MainActivity activity = reference.get();
-        activity.retrieveAllLinesFromAsyncTask(lines);
+        if (showProgressBar) { dialog.dismiss(); }
+
+        LinesRetrievableActivity activity = reference.get();
+        activity.retrieveAllLinesCallback(lines);
     }
 }

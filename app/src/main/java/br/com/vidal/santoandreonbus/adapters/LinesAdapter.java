@@ -1,24 +1,32 @@
 package br.com.vidal.santoandreonbus.adapters;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 import br.com.vidal.santoandreonbus.R;
 import br.com.vidal.santoandreonbus.models.Line;
 
-public class LinesAdapter extends BaseAdapter {
+public class LinesAdapter extends BaseAdapter implements Filterable {
 
     public Activity activity;
     public List<Line> lines;
+    public List<Line> allLines;
 
     public LinesAdapter(Activity activity, List<Line> lines) {
         this.activity = activity;
         this.lines = lines;
+        this.allLines = lines;
     }
 
     @Override
@@ -45,5 +53,50 @@ public class LinesAdapter extends BaseAdapter {
         towards.setText(line.towards);
 
         return view;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(final CharSequence constraint) {
+                FilterResults results = new FilterResults();
+
+                if (constraint == null || constraint.length() == 0) {
+                    results.values = allLines;
+                    results.count = allLines.size();
+
+                    return results;
+                }
+
+                ArrayList<Line> filteredResults = new ArrayList<>();
+
+                for (Line line : allLines) {
+                    if (findInLineCaseInsensitive(constraint, line)) { filteredResults.add(line); }
+                }
+
+                results.values = filteredResults;
+                results.count = filteredResults.size();
+
+                return results;
+            }
+
+            private boolean findInLineCaseInsensitive(CharSequence term, Line line) {
+                String pattern = Pattern.quote(term.toString());
+                int insensitive = Pattern.CASE_INSENSITIVE;
+
+                return Pattern.compile(pattern, insensitive).matcher(line.getDenomination()).find()
+                        || Pattern.compile(pattern, insensitive).matcher(line.fromwards).find()
+                        || Pattern.compile(pattern, insensitive).matcher(line.towards).find();
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                if (results.count == 0) { notifyDataSetInvalidated(); return; }
+
+                lines = (ArrayList<Line>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }
