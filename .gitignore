@@ -9,3 +9,4 @@
 /build
 /captures
 .externalNativeBuild
+/app/src/main/java/br/com/vidal/santoandreonbus/utilities/RestCredentials.java

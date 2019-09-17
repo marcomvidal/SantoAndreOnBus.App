@@ -6,9 +6,9 @@ import android.os.Bundle;
 
 import br.com.vidal.santoandreonbus.R;
 
-public class FetchingAPIDialog extends ProgressDialog {
+public class FetchingDataDialog extends ProgressDialog {
 
-    public FetchingAPIDialog(Context context) { super(context); }
+    public FetchingDataDialog(Context context) { super(context); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
