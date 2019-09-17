@@ -24,7 +24,13 @@
 
     <style name="SplashScreenSpinner">
         <item name="android:paddingTop">50dp</item>
-        <item name="android:progressTint">@android:color/white</item>
+    </style>
+
+    <style name="SplashScreenDisclaimer">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">16dp</item>
+
     </style>
 
     <!-- Title for default ActionBar -->

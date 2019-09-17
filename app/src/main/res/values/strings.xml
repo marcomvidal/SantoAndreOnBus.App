@@ -6,6 +6,9 @@
     <string name="title_itinerary">Itinerário</string>
     <string name="title_fleet">Frota</string>
 
+    <!-- Splashscreen -->
+    <string name="label_disclaimer">Marco Vidal© - 2019 \nEste aplicativo não é oficial e não possui qualquer ligação com empresas e órgãos oficiais de transporte.</string>
+
     <!-- General -->
     <string name="label_title">Denominação:</string>
     <string name="placeholder_fromwards">Origem</string>
