@@ -23,6 +23,7 @@
     </style>
 
     <style name="SplashScreenSpinner">
+        <item name="android:indeterminateTint">@android:color/white</item>
         <item name="android:paddingTop">50dp</item>
     </style>
 

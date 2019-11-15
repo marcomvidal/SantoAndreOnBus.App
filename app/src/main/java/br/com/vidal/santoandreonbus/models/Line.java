@@ -14,7 +14,7 @@ public class Line implements Serializable {
     public Company company;
     public List<InterestPoint> interestPoints;
     public List<Place> places;
-    public List<LineVehicle> lineVehicles;
+    public List<Vehicle> vehicles;
 
     public String getDenomination() {
         return this.letter + "-" + this.number;

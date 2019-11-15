@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import br.com.vidal.santoandreonbus.models.InterestPoint;
 import br.com.vidal.santoandreonbus.models.Line;
-import br.com.vidal.santoandreonbus.models.LineVehicle;
+import br.com.vidal.santoandreonbus.models.Vehicle;
 
 public class GeneralFragment extends Fragment {
 
@@ -86,13 +86,13 @@ public class GeneralFragment extends Fragment {
     }
 
     private void drawVehicleIcons() {
-        for (LineVehicle lineVehicle : line.lineVehicles) {
+        for (Vehicle vehicle : line.vehicles) {
             ImageView vehicleIcon = new ImageView(getContext());
             Resources resources = getResources();
 
             vehicleIcon.setAdjustViewBounds(true);
-            vehicleIcon.setContentDescription(lineVehicle.vehicle.name.toString());
-            TooltipCompat.setTooltipText(vehicleIcon, lineVehicle.vehicle.name.toString());
+            vehicleIcon.setContentDescription(vehicle.name.toString());
+            TooltipCompat.setTooltipText(vehicleIcon, vehicle.name.toString());
             vehicleIcon.setImageTintList(ColorStateList.valueOf(
                     resources.getColor(android.R.color.secondary_text_light_nodisable)));
 
@@ -103,7 +103,7 @@ public class GeneralFragment extends Fragment {
             int iconPadding = Math.round(resources.getDimension(R.dimen.vehicle_icon_padding));
             vehicleIcon.setPadding(iconPadding, iconPadding, iconPadding, iconPadding);
 
-            switch (lineVehicle.vehicle.name) {
+            switch (vehicle.name) {
                 case Microonibus:
                     vehicleIcon.setImageResource(R.drawable.ic_microonibus_foreground); break;
                 case Medio:

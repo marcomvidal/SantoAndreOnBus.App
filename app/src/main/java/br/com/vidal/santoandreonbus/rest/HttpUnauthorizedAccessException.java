@@ -1,4 +1,4 @@
-package br.com.vidal.santoandreonbus.utilities;
+package br.com.vidal.santoandreonbus.rest;
 
 public class HttpUnauthorizedAccessException extends Exception {
 

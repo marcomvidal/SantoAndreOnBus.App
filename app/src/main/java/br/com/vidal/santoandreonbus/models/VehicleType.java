@@ -1,7 +1,11 @@
 package br.com.vidal.santoandreonbus.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public enum VehicleType {
-    Microonibus("Microônibus"), Medio("Médio"), Padrao("Padrão");
+    @SerializedName("Microônibus") Microonibus("Microônibus"),
+    @SerializedName("Médio") Medio("Médio"),
+    @SerializedName("Padrão") Padrao("Padrão");
     public String description;
 
     VehicleType(String description) { this.description = description; }

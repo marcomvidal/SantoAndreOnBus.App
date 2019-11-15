@@ -1,4 +1,4 @@
-package br.com.vidal.santoandreonbus.utilities;
+package br.com.vidal.santoandreonbus.rest;
 
 import android.net.SSLCertificateSocketFactory;
 
@@ -10,10 +10,10 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 
-public class RestClient {
+public class RestClientForDevelopment implements RestClient {
 
     public String get(String urn, String token) throws Exception {
-        String uri = RestEnv.URL + urn;
+        String uri = EnvForDevelopment.URL + urn;
         HttpsURLConnection connection = setConnection(new URL(uri), "GET");
         connection.setRequestProperty("Authorization", "Bearer " + token);
         connection.connect();
@@ -22,9 +22,9 @@ public class RestClient {
     }
 
     public String post(String urn, String body) throws Exception {
-        String uri = RestEnv.URL + urn;
+        String uri = EnvForDevelopment.URL + urn;
         HttpsURLConnection connection = setConnection(new URL(uri), "POST");
-        connection.setRequestProperty("Content-type", RestEnv.CONTENT_TYPE);
+        connection.setRequestProperty("Content-type", Env.CONTENT_TYPE);
         connection.setDoOutput(true);
 
         PrintStream printStream = new PrintStream(connection.getOutputStream());
@@ -39,9 +39,9 @@ public class RestClient {
         HttpsURLConnection connection = (HttpsURLConnection) uri.openConnection();
         connection.setSSLSocketFactory(SSLCertificateSocketFactory.getInsecure(0, null));
         connection.setRequestMethod(httpMethod);
-        connection.setRequestProperty("Accept", RestEnv.CONTENT_TYPE);
+        connection.setRequestProperty("Accept", Env.CONTENT_TYPE);
         connection.setHostnameVerifier(ignoreSSLHostnameVerifier());
-        connection.setConnectTimeout(RestEnv.CONNECTION_TIMEOUT);
+        connection.setConnectTimeout(EnvForDevelopment.CONNECTION_TIMEOUT);
 
         return connection;
     }
