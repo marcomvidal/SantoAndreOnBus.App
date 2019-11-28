@@ -33,5 +33,8 @@
     <!-- Image accessibility descriptions -->
     <string name="description_interest_point">Ícone de localização</string>
     <string name="description_headway">Ícone de relógio</string>
-    <string name="line_search">Qual linha você deseja encontrar?</string>
+
+    <!-- Search fields -->
+    <string name="line_search">Qual destino deseja encontrar?</string>
+    <string name="place_search">Qual localidade deseja encontrar?</string>
 </resources>

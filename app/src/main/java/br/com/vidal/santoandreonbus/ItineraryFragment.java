@@ -4,18 +4,36 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import br.com.vidal.santoandreonbus.models.Line;
+import br.com.vidal.santoandreonbus.models.Place;
 
 public class ItineraryFragment extends Fragment {
 
     private Line line;
     private ListView places;
+    private ArrayAdapter<Place> adapter;
+
+    private TextWatcher placeSearch = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            ItineraryFragment.this.adapter.getFilter().filter(s);
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {}
+    };
 
     public ItineraryFragment() {}
 
@@ -37,15 +55,18 @@ public class ItineraryFragment extends Fragment {
 
     private void setViews(View view) {
         places = view.findViewById(R.id.placesId);
+        EditText searchField = view.findViewById(R.id.searchPlaceId);
+        searchField.addTextChangedListener(placeSearch);
     }
 
     private void fillInterestPoints() {
         if (getContext() == null) { return; }
 
-        places.setAdapter(new ArrayAdapter<>(
+        adapter = new ArrayAdapter<>(
                 getContext(),
                 android.R.layout.simple_list_item_1,
-                line.places)
-        );
+                line.places);
+
+        places.setAdapter(adapter);
     }
 }
