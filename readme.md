@@ -43,7 +43,7 @@ As imagens utilizadas estão presentes em `app/res/drawable`.
 Este aplicativo não está publicado na App Store. Para executá-lo, inicie a execução a partir do Android Studio.
 
 ## Arquitetura da solução
-![Principal](https://raw.githubusercontent.com/marcomvidal/SantoAndreOnBus/master/screenshot_todas.png)
+![Principal](https://raw.githubusercontent.com/marcomvidal/SantoAndreOnBus/master/arquitetura.png)
 
 ## Screenshots
 * [Ver](https://raw.githubusercontent.com/marcomvidal/SantoAndreOnBus/master/screenshot_todas.png)
