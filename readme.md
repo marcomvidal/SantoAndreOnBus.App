@@ -1,4 +1,4 @@
-# Santo André On Bus
+# SantoAndreOnBus.App
 
 Aplicativo para Android para consulta de informações de linhas de ônibus da cidade de Santo André.
 
